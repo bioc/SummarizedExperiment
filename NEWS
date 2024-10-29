@@ -1,3 +1,26 @@
+CHANGES IN VERSION 1.36.0
+-------------------------
+
+NEW FEATURES
+
+    o Calling saveRDS() on a SummarizedExperiment object that contains
+      out-of-memory data now raises an error with a message that redirects
+      the user to HDF5Array::saveHDF5SummarizedExperiment().
+
+SIGNIFICANT USER-VISIBLE CHANGES
+
+    o Move documentation of constructor function SummarizedExperiment()
+      from RangedSummarizedExperiment-class.Rd to SummarizedExperiment-class.Rd.
+      See https://github.com/Bioconductor/SummarizedExperiment/issues/80
+
+    o Change default value of 'rowData' argument in SummarizedExperiment()
+      constructor from GRangesList() to NULL.
+
+BUG FIXES
+
+    o Fix typos in error message from assay() and assays() setters.
+
+
 CHANGES IN VERSION 1.34.0
 -------------------------
 
@@ -147,15 +170,15 @@ SIGNIFICANT USER-VISIBLE CHANGES
 
     o Swap positions of arguments '...' and 'withDimnames' in assays()
       setter and getter. So now it's:
-    
+
           assays(x, withDimnames=TRUE, ...)
           assays(x, withDimnames=TRUE, ...) <- value
 
     o Add 'withDimnames' argument to the assay() getter/setter. So now it's:
-    
+
           assay(x, i, withDimnames=TRUE, ...)
           assay(x, i, withDimnames=TRUE, ...) <- value
-    
+
       Note that before this change, the user was able to explicitly set
       'withDimnames' when calling assay() but since this was not a formal
       argument it was forwarded to assays() via the ellipsis. Having it as
